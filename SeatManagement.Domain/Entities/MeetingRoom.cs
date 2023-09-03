@@ -7,7 +7,7 @@ namespace SeatManagementDomain.Entities
     {
         [Key]
         public int Id { get; set; }
-        public int MeetingRoomNo { get; set; }
+        public string Name { get; set; }
         public int SeatCount { get; set; }
 
         [ForeignKey("FK_MeetingRoom_Facility_FacilityId")]

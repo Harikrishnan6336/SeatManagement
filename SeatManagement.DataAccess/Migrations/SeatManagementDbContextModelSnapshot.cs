@@ -194,8 +194,9 @@ namespace SeatManagementDataAccess.Migrations
                     b.Property<int>("FacilityId")
                         .HasColumnType("int");
 
-                    b.Property<int>("MeetingRoomNo")
-                        .HasColumnType("int");
+                    b.Property<string>("Name")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<int>("SeatCount")
                         .HasColumnType("int");

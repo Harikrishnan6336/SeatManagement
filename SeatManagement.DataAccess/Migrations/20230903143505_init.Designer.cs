@@ -12,8 +12,8 @@ using SeatManagementDataAccess.Context;
 namespace SeatManagementDataAccess.Migrations
 {
     [DbContext(typeof(SeatManagementDbContext))]
-    [Migration("20230903093829_initi")]
-    partial class initi
+    [Migration("20230903143505_init")]
+    partial class init
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -196,8 +196,9 @@ namespace SeatManagementDataAccess.Migrations
                     b.Property<int>("FacilityId")
                         .HasColumnType("int");
 
-                    b.Property<int>("MeetingRoomNo")
-                        .HasColumnType("int");
+                    b.Property<string>("Name")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<int>("SeatCount")
                         .HasColumnType("int");

@@ -4,7 +4,7 @@
 
 namespace SeatManagementDataAccess.Migrations
 {
-    public partial class initi : Migration
+    public partial class init : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -116,7 +116,7 @@ namespace SeatManagementDataAccess.Migrations
                 {
                     Id = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
-                    MeetingRoomNo = table.Column<int>(type: "int", nullable: false),
+                    Name = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     SeatCount = table.Column<int>(type: "int", nullable: false),
                     FacilityId = table.Column<int>(type: "int", nullable: false)
                 },

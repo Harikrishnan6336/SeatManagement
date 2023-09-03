@@ -20,7 +20,7 @@ namespace SeatManagementConsole.Handlers
             _userInputHandler = userInputHandler;
         }
 
-        public int Handle()
+        public void Handle()
         {
             Console.WriteLine("Facility List:");
             var facilityViewDTOList = _facilityManager.GetNomenclature();
@@ -29,7 +29,7 @@ namespace SeatManagementConsole.Handlers
                 Console.WriteLine($"{facilityViewDTO.FacilityId}. {facilityViewDTO.CityAbbreviation}-{facilityViewDTO.BuildingAbbreviation}-{facilityViewDTO.FaciltyFloor}-{facilityViewDTO.FaciltyName}");
             }
 
-            var facilityId = _userInputHandler.GetUserInputInt("Choose the facility id:");
+            var facilityId = _userInputHandler.GetUserInputInt("Choose the facility id(where seats should be added):");
             var noOfSeats = _userInputHandler.GetUserInputInt("Enter the number of seats to add:");
 
             var seatListCount = _seatManager.Get().Where(x => x.FacilityId == facilityId).ToList().Count;
@@ -49,7 +49,7 @@ namespace SeatManagementConsole.Handlers
             }
             Console.WriteLine("Your seats has been added successfully");
             _userInputHandler.WaitForUserInput();
-            return 0;
+
         }
     }
 }

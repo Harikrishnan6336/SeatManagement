@@ -17,7 +17,7 @@ namespace SeatManagementAPI.Services.Implementations
         {
             var meetingRoom = new MeetingRoom()
             {
-                MeetingRoomNo = meetingRoomDTO.MeetingRoomNo,
+                Name = meetingRoomDTO.Name,
                 FacilityId = meetingRoomDTO.FacilityId,
                 SeatCount = meetingRoomDTO.SeatCount
             };

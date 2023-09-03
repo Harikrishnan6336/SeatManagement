@@ -26,7 +26,7 @@ namespace SeatManagementConsole.Handlers
             _facilityCityHandler = new OnboardFacilityCityHandler(_cityManager);
             _facilityBuildingHandler = new OnboardFacilityBuildingHandler(_buildingManager);
         }
-        public int Handle()
+        public void Handle()
         {
 
             var cityId = _facilityCityHandler.Handle();
@@ -48,7 +48,7 @@ namespace SeatManagementConsole.Handlers
 
             _facilityManager.Add(facilityObj);
             Console.WriteLine("Your facility has been added successfully");
-            return 0;
+
         }
     }
 }
