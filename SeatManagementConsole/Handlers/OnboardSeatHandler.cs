@@ -1,4 +1,5 @@
 ﻿using SeatManagementAPI.DTOs;
+using SeatManagementConsole.IOInterfaces;
 using SeatManagementConsole.ManagerInterfaces;
 using SeatManagementDomain.Entities;
 
@@ -8,12 +9,15 @@ namespace SeatManagementConsole.Handlers
     {
         private readonly IFacilityManager _facilityManager;
         private readonly IEntityManager<Seat> _seatManager;
+        private readonly IUserInputHandler _userInputHandler;
 
         public OnboardSeatHandler(IFacilityManager facilityManager,
-                                  IEntityManager<Seat> seatManager)
+                                  IEntityManager<Seat> seatManager,
+                                  IUserInputHandler userInputHandler)
         {
             _facilityManager = facilityManager;
             _seatManager = seatManager;
+            _userInputHandler = userInputHandler;
         }
 
         public int Handle()
@@ -24,10 +28,10 @@ namespace SeatManagementConsole.Handlers
             {
                 Console.WriteLine($"{facilityViewDTO.FacilityId}. {facilityViewDTO.CityAbbreviation}-{facilityViewDTO.BuildingAbbreviation}-{facilityViewDTO.FaciltyFloor}-{facilityViewDTO.FaciltyName}");
             }
-            Console.WriteLine("Choose the facility id:");
-            var facilityId = Convert.ToInt32(Console.ReadLine());
-            Console.WriteLine("Enter the number of seats to add:");
-            var noOfSeats = Convert.ToInt32(Console.ReadLine());
+
+            var facilityId = _userInputHandler.GetUserInputInt("Choose the facility id:");
+            var noOfSeats = _userInputHandler.GetUserInputInt("Enter the number of seats to add:");
+
             var seatListCount = _seatManager.Get().Where(x => x.FacilityId == facilityId).ToList().Count;
             int seatCount = seatListCount + 1;
             // TODO Allow an Employee to be allocated here itself.
@@ -44,8 +48,7 @@ namespace SeatManagementConsole.Handlers
                 _seatManager.Add(seat);
             }
             Console.WriteLine("Your seats has been added successfully");
-            Console.WriteLine("Press any key to continue");
-            Console.ReadLine();
+            _userInputHandler.WaitForUserInput();
             return 0;
         }
     }

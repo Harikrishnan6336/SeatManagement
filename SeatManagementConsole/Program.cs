@@ -2,6 +2,8 @@
 using SeatManagementConsole.Managers;
 using SeatManagementConsole.Handlers;
 using SeatManagementDomain.Entities;
+using SeatManagementConsole.IOInterfaces;
+using SeatManagementConsole.IOImplementations;
 
 namespace SeatManagementConsole
 {
@@ -14,6 +16,7 @@ namespace SeatManagementConsole
             IEntityManager<Building> buildingManager = new EntityManager<Building>("api/buildings");
             IFacilityManager facilityManager = new FacilityManager("api/facilities");
             IEntityManager<Seat> seatManager = new EntityManager<Seat>("api/seats");
+            IUserInputHandler consoleUserInputHandler = new ConsoleUserInputHandler();
 
 
             Console.WriteLine("----------------------SEAT ALLOCATION MANAGER-------------------------");
@@ -32,7 +35,7 @@ namespace SeatManagementConsole
                     onboardFacilityhandler.Handle();
                     break;
                 case '2':
-                    OnboardSeatHandler onboardSeathandler = new(facilityManager, seatManager);
+                    OnboardSeatHandler onboardSeathandler = new(facilityManager, seatManager, consoleUserInputHandler);
                     onboardSeathandler.Handle();
                     break;
 
