@@ -11,11 +11,14 @@ namespace SeatManagementConsole
     {
         public static void Main()
         {
+            IFacilityManager facilityManager = new FacilityManager("api/facilities");
+
             IEntityManager<City> cityManager = new EntityManager<City>("api/cities");
             IEntityManager<Building> buildingManager = new EntityManager<Building>("api/buildings");
-            IFacilityManager facilityManager = new FacilityManager("api/facilities");
             IEntityManager<Seat> seatManager = new EntityManager<Seat>("api/seats");
             IEntityManager<MeetingRoom> meetingRoomManager = new EntityManager<MeetingRoom>("api/meetingrooms");
+            IEntityManager<Cabin> cabinManager = new EntityManager<Cabin>("api/cabins");
+
 
 
             IUserInputHandler consoleUserInputHandler = new ConsoleUserInputHandler();
@@ -43,6 +46,10 @@ namespace SeatManagementConsole
                 case '3':
                     OnboardMeetingRoomHandler onboardMeetingRoomHandler = new(facilityManager, meetingRoomManager, consoleUserInputHandler);
                     onboardMeetingRoomHandler.Handle();
+                    break;
+                case '4':
+                     OnboardCabinHandler onboardCabinHandler = new(facilityManager, cabinManager, consoleUserInputHandler);
+                    onboardCabinHandler.Handle();
                     break;
 
             }

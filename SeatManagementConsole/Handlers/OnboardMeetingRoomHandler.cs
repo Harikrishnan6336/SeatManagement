@@ -29,12 +29,12 @@ namespace SeatManagementConsole.Handlers
                 Console.WriteLine($"{facilityViewDTO.FacilityId}. {facilityViewDTO.CityAbbreviation}-{facilityViewDTO.BuildingAbbreviation}-{facilityViewDTO.FaciltyFloor}-{facilityViewDTO.FaciltyName}");
             }
 
-            var facilityId = _userInputHandler.GetUserInputInt("Choose the facility id(where meeting rooms should be added):");
+            var facilityId = _userInputHandler.GetUserInputInt("Choose the facility id(where meeting room should be added):");
             var seatCount = _userInputHandler.GetUserInputInt("Enter the number of seats in the room");
 
             var meetingRoomListCount = _meetingRoomManager.Get().Where(x => x.FacilityId == facilityId).ToList().Count;
-            int meetingRoomNameCount = meetingRoomListCount + 1;
-            var meetingRoomName = "M" + meetingRoomNameCount;
+            meetingRoomListCount++;
+            var meetingRoomName = "M" + meetingRoomListCount;
 
 
             var meetingRoom = new MeetingRoom

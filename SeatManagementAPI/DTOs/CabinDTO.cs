@@ -6,6 +6,6 @@ namespace SeatManagementAPI.DTOs
     {
         public string? Name { get; set; }
         public int FacilityId { get; set; }
-        public int EmployeeId { get; set; }
+        public int? EmployeeId { get; set; }
     }
 }
