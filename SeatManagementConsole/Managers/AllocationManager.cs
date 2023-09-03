@@ -1,4 +1,4 @@
-﻿using SeatManagement.Interfaces;
+﻿using SeatManagementConsole.ManagerInterfaces;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -6,7 +6,7 @@ using System.Net;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace SeatManagement.Managers
+namespace SeatManagementConsole.Managers
 {
     public class AllocationManager<T> : IAllocationManager<T> where T : class
     {

@@ -1,4 +1,4 @@
-﻿using SeatManagement.Interfaces;
+﻿using SeatManagementConsole.ManagerInterfaces;
 using SeatManagementDomain.Entities;
 
 namespace SeatManagementConsole.Handlers

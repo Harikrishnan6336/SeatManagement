@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace SeatManagement.Interfaces
+namespace SeatManagementConsole.ManagerInterfaces
 {
     public interface IEntityManager<T> where T : class
     {

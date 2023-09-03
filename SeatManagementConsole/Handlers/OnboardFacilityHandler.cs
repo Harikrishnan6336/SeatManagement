@@ -1,10 +1,10 @@
 ﻿using SeatManagementDomain.Entities;
-using SeatManagement.Interfaces;
-using SeatManagement.Managers;
+using SeatManagementConsole.ManagerInterfaces;
+using SeatManagementConsole.Managers;
 using SeatManagement.Menus;
 using SeatManagementConsole.Handlers;
 
-namespace SeatManagement.Handlers
+namespace SeatManagementConsole.Handlers
 {
     public class OnboardFacilityHandler
     {

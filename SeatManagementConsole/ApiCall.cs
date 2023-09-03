@@ -1,9 +1,10 @@
-﻿using Newtonsoft.Json;
+﻿using Microsoft.VisualBasic;
+using Newtonsoft.Json;
 using SeatManagement;
 using System.Text;
 using JsonSerializer = System.Text.Json.JsonSerializer;
 
-namespace SeatManagement
+namespace SeatManagementConsole
 {
     public class ApiCall<T> : IApiCall<T> where T : class
     {
@@ -11,6 +12,8 @@ namespace SeatManagement
         private readonly HttpClient _client;
         public ApiCall(string ep)
         {
+           // _endPoint = string.Join("/", eps);
+
             _endPoint = ep;
             _client = new HttpClient
             {

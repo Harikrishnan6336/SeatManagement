@@ -25,6 +25,12 @@ namespace SeatManagementAPI.Controllers
             return Ok(_facilityService.GetFacilities());
         }
 
+        [HttpGet("nomenclature")]
+        public IActionResult GetNomenclature()
+        {
+            return Ok(_facilityService.GetFacilitiesNomenclature());
+        }
+
         [HttpPost]
         public IActionResult Post(FacilityDTO facilityDTO)
         {
@@ -33,3 +39,4 @@ namespace SeatManagementAPI.Controllers
         }
     }
 }
+

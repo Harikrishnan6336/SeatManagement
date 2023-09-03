@@ -32,5 +32,26 @@ namespace SeatManagementAPI.Services.Implementations
         {
             return _unitOfWork.Facility.GetAll();
         }
+
+        public IEnumerable<FacilityViewDTO> GetFacilitiesNomenclature()
+        {
+            var facilityList = _unitOfWork.Facility.GetAll();
+            var facilityViewDTOList = new List<FacilityViewDTO>();
+            foreach (Facility facility in facilityList) 
+            {
+                var cityAbbreviation = _unitOfWork.City.GetById(facility.CityId).Abbreviation;
+                var buildingAbbreviation = _unitOfWork.Building.GetById(facility.BuildingId).Abbreviation;
+                facilityViewDTOList.Add(new FacilityViewDTO
+                {
+                    FacilityId = facility.Id,
+                    CityAbbreviation = cityAbbreviation,
+                    BuildingAbbreviation = buildingAbbreviation,
+                    FaciltyFloor = facility.Floor,
+                    FaciltyName = facility.Name
+                }) ; 
+            }
+            return facilityViewDTOList;
+
+        }
     }
 }

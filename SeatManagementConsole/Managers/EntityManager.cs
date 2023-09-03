@@ -1,6 +1,6 @@
-﻿using SeatManagement.Interfaces;
+﻿using SeatManagementConsole.ManagerInterfaces;
 
-namespace SeatManagement.Managers
+namespace SeatManagementConsole.Managers
 {
     public class EntityManager<T> : IEntityManager<T> where T : class
     {

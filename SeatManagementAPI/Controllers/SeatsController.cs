@@ -21,6 +21,8 @@ namespace SeatManagementAPI.Controllers
             return Ok(_seatService.GetSeats());
         }
 
+
+
         [HttpPost]
         public IActionResult Post(SeatDTO seatDTO)
         {

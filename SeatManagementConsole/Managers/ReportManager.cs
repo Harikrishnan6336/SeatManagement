@@ -3,9 +3,9 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using SeatManagement.Interfaces;
+using SeatManagementConsole.ManagerInterfaces;
 
-namespace SeatManagement.Managers
+namespace SeatManagementConsole.Managers
 {
     public class ReportManager<T> : IReportManager<T> where T : class
     {
