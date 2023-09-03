@@ -14,7 +14,7 @@ namespace SeatManagement
             _endPoint = ep;
             _client = new HttpClient
             {
-                BaseAddress = new Uri("https://localhost:7283/")
+                BaseAddress = new Uri("https://localhost:7232/")
             };
         }
         public List<T> GetData()

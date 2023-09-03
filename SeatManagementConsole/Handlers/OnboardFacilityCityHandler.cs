@@ -27,7 +27,6 @@ namespace SeatManagementConsole.Handlers
                     
                 case '2':
                     return AddToNewCity();
-                  
                 default:
                     Console.WriteLine("Invalid option. Please try again.");
                     return Handle();

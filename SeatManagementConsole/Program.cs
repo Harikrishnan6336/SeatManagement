@@ -23,12 +23,13 @@ public class Program
         Console.Clear();
         switch (mainMenuOption)
         {
-            
-           case '1':
+
+            case '1':
                 OnboardFacilityHandler handler = new OnboardFacilityHandler(cityManager, buildingManager, facilityManager);
                 handler.Handle();
                 break;
             case '2':
+
                 break;
 
         }
