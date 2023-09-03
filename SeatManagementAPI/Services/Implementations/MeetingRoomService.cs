@@ -1,0 +1,33 @@
+﻿using SeatManagementDomain.Entities;
+using SeatManagementDomain.Repository;
+using SeatManagementAPI.DTOs;
+using SeatManagementAPI.Services.Interfaces;
+
+namespace SeatManagementAPI.Services.Implementations
+{
+    public class MeetingRoomService : IMeetingRoomService
+    {
+        private readonly IUnitOfWork _unitOfWork;
+        public MeetingRoomService(IUnitOfWork unitOfWork)
+        {
+            _unitOfWork = unitOfWork;
+        }
+
+        public void AddMeetingRoom(MeetingRoomDTO meetingRoomDTO)
+        {
+            var meetingRoom = new MeetingRoom()
+            {
+                MeetingRoomNo = meetingRoomDTO.MeetingRoomNo,
+                FacilityId = meetingRoomDTO.FacilityId,
+                SeatCount = meetingRoomDTO.SeatCount
+            };
+            _unitOfWork.MeetingRoom.Add(meetingRoom);
+            _unitOfWork.Commit();
+        }
+
+        public IEnumerable<MeetingRoom> GetMeetingRooms()
+        {
+            return _unitOfWork.MeetingRoom.GetAll();
+        }
+    }
+}
