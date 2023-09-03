@@ -8,11 +8,11 @@ namespace SeatManagementConsole.Handlers
     public class OnboardSeatHandler
     {
         private readonly IFacilityManager _facilityManager;
-        private readonly IEntityManager<Seat> _seatManager;
+        private readonly ISeatManager<Seat> _seatManager;
         private readonly IUserInputHandler _userInputHandler;
 
         public OnboardSeatHandler(IFacilityManager facilityManager,
-                                  IEntityManager<Seat> seatManager,
+                                  ISeatManager<Seat> seatManager,
                                   IUserInputHandler userInputHandler)
         {
             _facilityManager = facilityManager;

@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace SeatManagementConsole.ManagerInterfaces
 {
-    public interface IEntityManager<T> where T : class
+    public interface ISeatManager<T> where T : class
     {
         public List<T> Get();
         public int Add(T obj);

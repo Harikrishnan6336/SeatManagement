@@ -5,9 +5,9 @@ namespace SeatManagementConsole.Handlers
 {
     public class OnboardFacilityCityHandler
     {
-        private readonly IEntityManager<City> _cityManager;
+        private readonly ISeatManager<City> _cityManager;
 
-        public OnboardFacilityCityHandler(IEntityManager<City> cityManager)
+        public OnboardFacilityCityHandler(ISeatManager<City> cityManager)
         {
             _cityManager = cityManager;
         }

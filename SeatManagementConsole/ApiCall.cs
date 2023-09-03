@@ -12,7 +12,6 @@ namespace SeatManagementConsole
         private readonly HttpClient _client;
         public ApiCall(string ep)
         {
-           // _endPoint = string.Join("/", eps);
 
             _endPoint = ep;
             _client = new HttpClient
@@ -45,15 +44,22 @@ namespace SeatManagementConsole
                 return res;
             }
             return 0;
-
         }
+
         public void PutData(T data)
         {
             var json = JsonSerializer.Serialize(data);
-            Console.WriteLine(json);
             var content = new StringContent(json, Encoding.UTF8, "application/json");
-            Console.WriteLine(content);
+            var response = _client.PutAsync(_endPoint, content).Result;
+        }
+
+        public void PatchData(T data)
+        {
+            var json = JsonSerializer.Serialize(data);
+            var content = new StringContent(json, Encoding.UTF8, "application/json");
             var response = _client.PatchAsync(_endPoint, content).Result;
         }
     }
 }
+
+

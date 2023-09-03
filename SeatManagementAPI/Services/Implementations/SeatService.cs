@@ -32,6 +32,22 @@ namespace SeatManagementAPI.Services.Implementations
             return _unitOfWork.Seat.GetAll();
         }
 
+        public IEnumerable<Seat> GetUnoccupiedSeatsByFacility(int facilityId)
+        {
+            var seatList = _unitOfWork.Seat.GetAll();
+            var unoccupiedSeatByFacilityList = new List<Seat>();
+
+            foreach (Seat seat in seatList)
+            {
+                if (seat.EmployeeId == null && seat.FacilityId == facilityId)
+                {
+                    unoccupiedSeatByFacilityList.Add(seat);
+                }
+            }
+            return unoccupiedSeatByFacilityList;
+        }
+
+
         public void AllocateSeat(int SeatId, int EmployeeId)
         {
             var seat = _unitOfWork.Seat.GetById(SeatId);

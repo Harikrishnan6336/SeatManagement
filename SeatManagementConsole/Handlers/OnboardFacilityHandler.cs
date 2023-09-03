@@ -8,16 +8,16 @@ namespace SeatManagementConsole.Handlers
 {
     public class OnboardFacilityHandler
     {
-        private readonly IEntityManager<City> _cityManager;
-        private readonly IEntityManager<Building> _buildingManager;
-        private readonly IEntityManager<Facility> _facilityManager;
+        private readonly ISeatManager<City> _cityManager;
+        private readonly ISeatManager<Building> _buildingManager;
+        private readonly ISeatManager<Facility> _facilityManager;
 
         private readonly OnboardFacilityCityHandler _facilityCityHandler;
         private readonly OnboardFacilityBuildingHandler _facilityBuildingHandler;
 
-        public OnboardFacilityHandler(IEntityManager<City> cityManager, 
-                                      IEntityManager<Building> buildingManager, 
-                                      IEntityManager<Facility> facilityManager)
+        public OnboardFacilityHandler(ISeatManager<City> cityManager, 
+                                      ISeatManager<Building> buildingManager, 
+                                      ISeatManager<Facility> facilityManager)
         {
             _cityManager = cityManager;
             _buildingManager = buildingManager;

@@ -12,12 +12,13 @@ namespace SeatManagementConsole
         public static void Main()
         {
             IFacilityManager facilityManager = new FacilityManager("api/facilities");
+            ISeatManager seatManager = new SeatManager("api/seats");
 
-            IEntityManager<City> cityManager = new EntityManager<City>("api/cities");
-            IEntityManager<Building> buildingManager = new EntityManager<Building>("api/buildings");
-            IEntityManager<Seat> seatManager = new EntityManager<Seat>("api/seats");
-            IEntityManager<MeetingRoom> meetingRoomManager = new EntityManager<MeetingRoom>("api/meetingrooms");
-            IEntityManager<Cabin> cabinManager = new EntityManager<Cabin>("api/cabins");
+            ISeatManager<City> cityManager = new EntityManager<City>("api/cities");
+            ISeatManager<Building> buildingManager = new EntityManager<Building>("api/buildings");
+            
+            ISeatManager<MeetingRoom> meetingRoomManager = new EntityManager<MeetingRoom>("api/meetingrooms");
+            ISeatManager<Cabin> cabinManager = new EntityManager<Cabin>("api/cabins");
 
 
 
@@ -26,7 +27,7 @@ namespace SeatManagementConsole
 
             Console.WriteLine("----------------------SEAT ALLOCATION MANAGER-------------------------");
             Console.WriteLine("MENU");
-            Console.WriteLine("[1].Onboard Facility\n[2].Onboard Seats\n[3].Onboard Meeting Rooms\n[4].Onboard Cabins\n[5].Add Employees\n[6].Seat Allocation\n[7].Seat Deallocation\n[8].Report Generation");
+            Console.WriteLine("[1].Onboard Facility\n[2].Add Seats\n[3].Add Meeting Rooms\n[4].Add Cabins\n[5].Add Employees\n[6].Seat Allocation\n[7].Seat Deallocation\n[8].Report Generation");
             Console.Write("Choose your option: ");
 
             char mainMenuOption = Console.ReadKey().KeyChar;
@@ -51,7 +52,13 @@ namespace SeatManagementConsole
                      OnboardCabinHandler onboardCabinHandler = new(facilityManager, cabinManager, consoleUserInputHandler);
                     onboardCabinHandler.Handle();
                     break;
-
+                case '5':
+                    // TODO
+                    break;
+                case '6':
+                    SeatAllocationHandler seatAllocationHandler = new(facilityManager, seatManager, consoleUserInputHandler);
+                    seatAllocationHandler.Handle();
+                    break;
             }
         }
     }

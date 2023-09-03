@@ -9,10 +9,10 @@ namespace SeatManagementConsole.Handlers
     public class OnboardMeetingRoomHandler
     {
         private readonly IFacilityManager _facilityManager;
-        private readonly IEntityManager<MeetingRoom> _meetingRoomManager;
+        private readonly ISeatManager<MeetingRoom> _meetingRoomManager;
         private readonly IUserInputHandler _userInputHandler;
         public OnboardMeetingRoomHandler(IFacilityManager facilityManager,
-                                         IEntityManager<MeetingRoom> meetingRoomManager,
+                                         ISeatManager<MeetingRoom> meetingRoomManager,
                                          IUserInputHandler userInputHandler)
         {
             _facilityManager = facilityManager;

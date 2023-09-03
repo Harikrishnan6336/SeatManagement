@@ -1,5 +1,4 @@
 ﻿using SeatManagementAPI.DTOs;
-using SeatManagementConsole.ManagerInterfaces;
 using SeatManagementDomain.Entities;
 using System;
 using System.Collections.Generic;
@@ -9,8 +8,12 @@ using System.Threading.Tasks;
 
 namespace SeatManagementConsole.ManagerInterfaces
 {
-    public interface IFacilityManager : ISeatManager<Facility>
+    public interface ISeatManager : ISeatManager<Seat>
     {
-        List<FacilityViewDTO> GetNomenclature();
+        List<Seat> GetUnoccupiedSeatsByFacility(int facilityId);
+        void SeatAllocate(SeatAllocateDTO obj);
+
+        void SeatDeallocate(SeatAllocateDTO obj);
+
     }
 }

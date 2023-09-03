@@ -13,5 +13,8 @@ namespace SeatManagementConsole
         int PostData(T data);
 
         void PutData(T data);
+
+        void PatchData(T data);
+
     }
 }

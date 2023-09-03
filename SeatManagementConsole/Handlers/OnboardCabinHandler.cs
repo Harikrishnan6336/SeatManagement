@@ -13,10 +13,10 @@ namespace SeatManagementConsole.Handlers
     public class OnboardCabinHandler
     {
         private readonly IFacilityManager _facilityManager;
-        private readonly IEntityManager<Cabin> _cabinManager;
+        private readonly ISeatManager<Cabin> _cabinManager;
         private readonly IUserInputHandler _userInputHandler;
         public OnboardCabinHandler(IFacilityManager facilityManager,
-                                         IEntityManager<Cabin> cabinManager,
+                                         ISeatManager<Cabin> cabinManager,
                                          IUserInputHandler userInputHandler)
         {
             _facilityManager = facilityManager;

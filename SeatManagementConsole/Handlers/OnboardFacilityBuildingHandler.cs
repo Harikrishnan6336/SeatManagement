@@ -5,9 +5,9 @@ namespace SeatManagementConsole.Handlers
 {
     public class OnboardFacilityBuildingHandler
     {
-        private readonly IEntityManager<Building> _buildingManager;
+        private readonly ISeatManager<Building> _buildingManager;
 
-        public OnboardFacilityBuildingHandler(IEntityManager<Building> buildingManager)
+        public OnboardFacilityBuildingHandler(ISeatManager<Building> buildingManager)
         {
             _buildingManager = buildingManager;
         }

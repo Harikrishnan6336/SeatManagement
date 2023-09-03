@@ -1,5 +1,6 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using SeatManagementAPI.DTOs;
+using SeatManagementAPI.Services.Implementations;
 using SeatManagementAPI.Services.Interfaces;
 
 namespace SeatManagementAPI.Controllers
@@ -21,6 +22,11 @@ namespace SeatManagementAPI.Controllers
             return Ok(_seatService.GetSeats());
         }
 
+        [HttpGet("unoccupiedseats/{facilityId}")]
+        public IActionResult GetUnoccupiedSeatsByFacility(int facilityId)
+        {
+            return Ok(_seatService.GetUnoccupiedSeatsByFacility(facilityId));
+        }
 
 
         [HttpPost]
