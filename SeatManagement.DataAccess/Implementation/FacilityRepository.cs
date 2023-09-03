@@ -7,7 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace SeatManagement.DataAccess.Implementation
+namespace SeatManagementDataAccess.Implementation
 {
     public class FacilityRepository : GenericRepository<Facility>, IFacilityRepository
     {

@@ -1,7 +1,8 @@
-﻿using SeatManagementDataAccess.Context;
+﻿using SeatManagementDataAccess.Implementation;
+using SeatManagementDataAccess.Context;
 using SeatManagementDomain.Repository;
 
-namespace SeatManagement.DataAccess.Implementation
+namespace SeatManagementDataAccess.Implementation
 {
     public class UnitOfWork : IUnitOfWork
     {

@@ -7,7 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace SeatManagement.DataAccess.Implementation
+namespace SeatManagementDataAccess.Implementation
 {
     internal class BuildingRepository : GenericRepository<Building>, IBuildingRepository
     {

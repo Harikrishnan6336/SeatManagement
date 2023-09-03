@@ -7,7 +7,7 @@ using System.Linq.Expressions;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace SeatManagement.DataAccess.Implementation
+namespace SeatManagementDataAccess.Implementation
 {
     public class GenericRepository<T> : IGenericRepository<T> where T : class
     {

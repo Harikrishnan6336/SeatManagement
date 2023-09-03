@@ -1,7 +1,6 @@
 ﻿using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
-using NuGet.Protocol.Core.Types;
-using SeatManagement.DataAccess.Implementation;
+using SeatManagementDataAccess.Implementation;
 using SeatManagementDomain.Entities;
 using SeatManagementDomain.Repository;
 using SeatManagementAPI.DTOs;
@@ -33,6 +32,4 @@ namespace SeatManagementAPI.Controllers
             return Ok();
         }
     }
-
-
 }
