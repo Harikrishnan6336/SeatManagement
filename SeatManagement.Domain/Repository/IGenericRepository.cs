@@ -13,6 +13,8 @@ namespace SeatManagementDomain.Repository
 
         void AddRange(IEnumerable<T> entities);
 
+        void Update(T entity);
+
         IEnumerable<T> Find(Expression<Func<T, bool>> predicate);
 
         void Remove(T entity);
