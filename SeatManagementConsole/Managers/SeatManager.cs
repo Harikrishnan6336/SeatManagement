@@ -26,6 +26,14 @@ namespace SeatManagementConsole.Managers
             return list;
         }
 
+        public List<Seat> GetUnoccupiedSeats()
+        {
+            var newEndpoint = _endPoint + "/unoccupiedseats";
+            IApiCall<Seat> apiCall = new ApiCall<Seat>(newEndpoint);
+            var list = apiCall.GetData();
+            return list;
+        }
+
         public void SeatAllocate(SeatAllocateDTO obj)
         {
             var newEndpoint = _endPoint + "/allocate";

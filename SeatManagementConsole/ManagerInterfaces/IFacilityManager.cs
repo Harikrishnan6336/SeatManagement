@@ -1,5 +1,6 @@
 ﻿using SeatManagementAPI.DTOs;
 using SeatManagementConsole.ManagerInterfaces;
+using SeatManagementConsole.Managers;
 using SeatManagementDomain.Entities;
 using System;
 using System.Collections.Generic;
@@ -9,7 +10,7 @@ using System.Threading.Tasks;
 
 namespace SeatManagementConsole.ManagerInterfaces
 {
-    public interface IFacilityManager : ISeatManager<Facility>
+    public interface IFacilityManager : IEntityManager<Facility>
     {
         List<FacilityViewDTO> GetNomenclature();
     }

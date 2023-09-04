@@ -5,14 +5,14 @@ using SeatManagementDomain.Entities;
 
 namespace SeatManagementConsole.Handlers
 {
-    public class OnboardSeatHandler
+    public class OnboardSeatHandler : IHandler
     {
         private readonly IFacilityManager _facilityManager;
-        private readonly ISeatManager<Seat> _seatManager;
+        private readonly ISeatManager _seatManager;
         private readonly IUserInputHandler _userInputHandler;
 
         public OnboardSeatHandler(IFacilityManager facilityManager,
-                                  ISeatManager<Seat> seatManager,
+                                  ISeatManager seatManager,
                                   IUserInputHandler userInputHandler)
         {
             _facilityManager = facilityManager;
@@ -20,7 +20,7 @@ namespace SeatManagementConsole.Handlers
             _userInputHandler = userInputHandler;
         }
 
-        public void Handle()
+        public int Handle()
         {
             Console.WriteLine("Facility List:");
             var facilityViewDTOList = _facilityManager.GetNomenclature();
@@ -49,7 +49,7 @@ namespace SeatManagementConsole.Handlers
             }
             Console.WriteLine("Your seats has been added successfully");
             _userInputHandler.WaitForUserInput();
-
+            return 0;
         }
     }
 }

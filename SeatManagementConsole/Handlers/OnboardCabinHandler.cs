@@ -2,21 +2,16 @@
 using SeatManagementConsole.IOInterfaces;
 using SeatManagementConsole.ManagerInterfaces;
 using SeatManagementDomain.Entities;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace SeatManagementConsole.Handlers
 {
-    public class OnboardCabinHandler
+    public class OnboardCabinHandler : IHandler
     {
         private readonly IFacilityManager _facilityManager;
-        private readonly ISeatManager<Cabin> _cabinManager;
+        private readonly ICabinManager _cabinManager;
         private readonly IUserInputHandler _userInputHandler;
         public OnboardCabinHandler(IFacilityManager facilityManager,
-                                         ISeatManager<Cabin> cabinManager,
+                                         ICabinManager cabinManager,
                                          IUserInputHandler userInputHandler)
         {
             _facilityManager = facilityManager;
@@ -24,7 +19,7 @@ namespace SeatManagementConsole.Handlers
             _userInputHandler = userInputHandler;
         }
 
-        public void Handle()
+        public int Handle()
         {
             Console.WriteLine("Facility List:");
             var facilityViewDTOList = _facilityManager.GetNomenclature();
@@ -49,6 +44,7 @@ namespace SeatManagementConsole.Handlers
             _cabinManager.Add(cabin);
             Console.WriteLine("Your cabin has been added successfully");
             _userInputHandler.WaitForUserInput();
+            return 0;
         }
     }
 }

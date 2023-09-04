@@ -1,9 +1,4 @@
 ﻿using SeatManagementConsole.IOInterfaces;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace SeatManagementConsole.IOImplementations
 {
@@ -19,10 +14,22 @@ namespace SeatManagementConsole.IOImplementations
             return userInput;
         }
 
+        public string GetUserInputString(string message)
+        {
+            string userInput;
+            do
+            {
+                Console.Write($"{message} ");
+                userInput = Console.ReadLine()!;
+            } while (string.IsNullOrEmpty(userInput));
+            return userInput;
+        }
+
         public void WaitForUserInput()
         {
             Console.WriteLine("Press any key to continue...");
             Console.ReadKey();
+            Console.Clear();
         }
     }
 }

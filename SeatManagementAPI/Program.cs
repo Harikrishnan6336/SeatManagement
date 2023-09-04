@@ -30,12 +30,7 @@ builder.Services.AddSingleton<IFacilityService, FacilityService>();
 builder.Services.AddSingleton<ISeatService, SeatService>();
 builder.Services.AddSingleton<IMeetingRoomService, MeetingRoomService>();
 builder.Services.AddSingleton<IMeetingRoomAssetService, MeetingRoomAssetService>();
-//builder.Services.AddSingleton<IReportService, ReportService>();
-
-
-
-
-
+builder.Services.AddSingleton<IReportService, ReportService>();
 
 var app = builder.Build();
 

@@ -1,40 +1,41 @@
 ﻿using SeatManagementDomain.Entities;
 using SeatManagementConsole.ManagerInterfaces;
-using SeatManagementConsole.Managers;
-using SeatManagement.Menus;
-using SeatManagementConsole.Handlers;
+using SeatManagementConsole.IOInterfaces;
 
 namespace SeatManagementConsole.Handlers
 {
-    public class OnboardFacilityHandler
+    public class OnboardFacilityHandler : IHandler
     {
-        private readonly ISeatManager<City> _cityManager;
-        private readonly ISeatManager<Building> _buildingManager;
-        private readonly ISeatManager<Facility> _facilityManager;
+        private readonly IEntityManager<City> _cityManager;
+        private readonly IEntityManager<Building> _buildingManager;
+        private readonly IEntityManager<Facility> _facilityManager;
+        private readonly IUserInputHandler _userInputHandler;
 
         private readonly OnboardFacilityCityHandler _facilityCityHandler;
         private readonly OnboardFacilityBuildingHandler _facilityBuildingHandler;
 
-        public OnboardFacilityHandler(ISeatManager<City> cityManager, 
-                                      ISeatManager<Building> buildingManager, 
-                                      ISeatManager<Facility> facilityManager)
+        public OnboardFacilityHandler(IEntityManager<City> cityManager,
+                                      IEntityManager<Building> buildingManager, 
+                                      IEntityManager<Facility> facilityManager,
+                                      IUserInputHandler userInputHandler)
         {
             _cityManager = cityManager;
             _buildingManager = buildingManager;
             _facilityManager = facilityManager;
 
-            _facilityCityHandler = new OnboardFacilityCityHandler(_cityManager);
-            _facilityBuildingHandler = new OnboardFacilityBuildingHandler(_buildingManager);
+            _userInputHandler = userInputHandler;
+
+            _facilityCityHandler = new OnboardFacilityCityHandler(_cityManager, _userInputHandler);
+            _facilityBuildingHandler = new OnboardFacilityBuildingHandler(_buildingManager, _userInputHandler);
         }
-        public void Handle()
+        public int Handle()
         {
 
             var cityId = _facilityCityHandler.Handle();
-
             var buildingId = _facilityBuildingHandler.Handle();
 
-            Console.Write("Enter the facility name: ");
-            var facilityName = Console.ReadLine();
+            var facilityName = _userInputHandler.GetUserInputString("Enter the facility name: ");
+
             Console.Write("Enter the facility floor: ");
             var facilityFloor = Convert.ToInt16(Console.ReadLine());
 
@@ -48,7 +49,7 @@ namespace SeatManagementConsole.Handlers
 
             _facilityManager.Add(facilityObj);
             Console.WriteLine("Your facility has been added successfully");
-
+            return 0;
         }
     }
 }

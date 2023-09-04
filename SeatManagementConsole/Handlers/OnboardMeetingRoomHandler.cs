@@ -1,18 +1,19 @@
 ﻿using Microsoft.EntityFrameworkCore.ChangeTracking.Internal;
 using SeatManagementAPI.DTOs;
+using SeatManagementConsole.IOImplementations;
 using SeatManagementConsole.IOInterfaces;
 using SeatManagementConsole.ManagerInterfaces;
 using SeatManagementDomain.Entities;
 
 namespace SeatManagementConsole.Handlers
 {
-    public class OnboardMeetingRoomHandler
+    public class OnboardMeetingRoomHandler : IHandler
     {
         private readonly IFacilityManager _facilityManager;
-        private readonly ISeatManager<MeetingRoom> _meetingRoomManager;
+        private readonly IEntityManager<MeetingRoom> _meetingRoomManager;
         private readonly IUserInputHandler _userInputHandler;
         public OnboardMeetingRoomHandler(IFacilityManager facilityManager,
-                                         ISeatManager<MeetingRoom> meetingRoomManager,
+                                         IEntityManager<MeetingRoom> meetingRoomManager,
                                          IUserInputHandler userInputHandler)
         {
             _facilityManager = facilityManager;
@@ -20,7 +21,7 @@ namespace SeatManagementConsole.Handlers
             _userInputHandler = userInputHandler;
         }
 
-        public void Handle()
+        public int Handle()
         {
             Console.WriteLine("Facility List:");
             var facilityViewDTOList = _facilityManager.GetNomenclature();
@@ -46,7 +47,11 @@ namespace SeatManagementConsole.Handlers
             };
             _meetingRoomManager.Add(meetingRoom);
             Console.WriteLine("Your meeting room has been added successfully");
+
+
             _userInputHandler.WaitForUserInput();
+
+            return 0;
         }
     }
 }

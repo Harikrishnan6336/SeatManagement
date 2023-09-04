@@ -1,15 +1,19 @@
-﻿using SeatManagementConsole.ManagerInterfaces;
+﻿using SeatManagementConsole.IOImplementations;
+using SeatManagementConsole.IOInterfaces;
+using SeatManagementConsole.ManagerInterfaces;
 using SeatManagementDomain.Entities;
 
 namespace SeatManagementConsole.Handlers
 {
-    public class OnboardFacilityCityHandler
+    public class OnboardFacilityCityHandler : IHandler
     {
-        private readonly ISeatManager<City> _cityManager;
+        private readonly IEntityManager<City> _cityManager;
+        private readonly IUserInputHandler _userInputHandler;
 
-        public OnboardFacilityCityHandler(ISeatManager<City> cityManager)
+        public OnboardFacilityCityHandler(IEntityManager<City> cityManager, IUserInputHandler userInputHandler)
         {
             _cityManager = cityManager;
+            _userInputHandler = userInputHandler;
         }
 
         public int Handle()
@@ -36,13 +40,8 @@ namespace SeatManagementConsole.Handlers
         private int AddToExistingCity()
         {
             var cityList = _cityManager.Get();
-            foreach (var city in cityList)
-            {
-                Console.WriteLine($"{city.Id}. {city.Name}");
-            }
-
-            Console.Write("Enter the city id of the city you want: ");
-            var cityId = Convert.ToInt32(Console.ReadLine());
+            DisplayList.DisplayEntityList<City>(cityList);
+            var cityId = _userInputHandler.GetUserInputInt("Enter the city id of the city you want: ");
 
             if (cityList.Any(city => city.Id == cityId))
             {
@@ -57,10 +56,8 @@ namespace SeatManagementConsole.Handlers
 
         private int AddToNewCity()
         {
-            Console.Write("Enter the name of the city: ");
-            var cityName = Console.ReadLine();
-            Console.Write("Enter the city abbreviation: ");
-            var cityAbbrv = Console.ReadLine();
+            var cityName = _userInputHandler.GetUserInputString("Enter the name of the city: ");
+            var cityAbbrv = _userInputHandler.GetUserInputString("Enter the city abbreviation: ");
 
             var cityObj = new City
             {

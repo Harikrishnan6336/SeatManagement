@@ -9,6 +9,7 @@ namespace SeatManagementConsole.IOInterfaces
     public interface IUserInputHandler
     {
         int GetUserInputInt(string message);
+        string GetUserInputString(string message);
         void WaitForUserInput();
 
     }

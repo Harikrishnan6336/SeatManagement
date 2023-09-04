@@ -1,10 +1,11 @@
-﻿using SeatManagementDomain.Entities;
+﻿using SeatManagementAPI.DTOs;
+using SeatManagementDomain.Entities;
 
 namespace SeatManagementAPI.Services.Interfaces
 {
     public interface IReportService
     {
-        //List<Overview> GetAllocatedList();
+        List<ReportDTO> Get();
 
         //List<UnallocatedViewModel> GetUnallocatedList();
     }

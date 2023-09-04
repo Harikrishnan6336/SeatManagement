@@ -2,7 +2,7 @@
 
 namespace SeatManagementConsole.Managers
 {
-    public class EntityManager<T> : ISeatManager<T> where T : class
+    public class EntityManager<T> : IEntityManager<T> where T : class
     {
         private readonly IApiCall<T> _apiCall;
         public EntityManager(string endPoint) 

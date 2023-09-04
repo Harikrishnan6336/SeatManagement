@@ -1,13 +1,9 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using SeatManagementAPI.DTOs;
 
 namespace SeatManagementConsole.ManagerInterfaces
 {
-    public interface IReportManager<T>
+    public interface IReportManager
     {
-        List<T> GenerateReport();
+        List<ReportDTO> GenerateReport();
     }
 }

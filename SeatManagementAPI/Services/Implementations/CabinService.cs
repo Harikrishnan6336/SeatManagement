@@ -28,5 +28,27 @@ namespace SeatManagementAPI.Services.Implementations
             _unitOfWork.Cabin.Add(cabin);
             _unitOfWork.Commit();
         }
+
+        public IEnumerable<Cabin> GetUnoccupiedCabins()
+        {
+            var cabinList = _unitOfWork.Cabin.GetAll();
+            var unoccupiedCabinsList = new List<Cabin>();
+
+            foreach (Cabin cabin in cabinList)
+            {
+                if (cabin.EmployeeId == null)
+                {
+                    unoccupiedCabinsList.Add(cabin);
+                }
+            }
+            return unoccupiedCabinsList;
+        }
+
+        public void AllocateCabin(int CabinId, int EmployeeId)
+        {
+            var seat = _unitOfWork.Cabin.GetById(CabinId);
+            seat.EmployeeId = EmployeeId;
+            _unitOfWork.Commit();
+        }
     }
 }

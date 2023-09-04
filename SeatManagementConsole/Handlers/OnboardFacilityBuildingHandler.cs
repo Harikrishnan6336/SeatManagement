@@ -1,15 +1,19 @@
-﻿using SeatManagementConsole.ManagerInterfaces;
+﻿using SeatManagementConsole.IOImplementations;
+using SeatManagementConsole.IOInterfaces;
+using SeatManagementConsole.ManagerInterfaces;
 using SeatManagementDomain.Entities;
 
 namespace SeatManagementConsole.Handlers
 {
-    public class OnboardFacilityBuildingHandler
+    public class OnboardFacilityBuildingHandler : IHandler
     {
-        private readonly ISeatManager<Building> _buildingManager;
+        private readonly IEntityManager<Building> _buildingManager;
+        private readonly IUserInputHandler _userInputHandler;
 
-        public OnboardFacilityBuildingHandler(ISeatManager<Building> buildingManager)
+        public OnboardFacilityBuildingHandler(IEntityManager<Building> buildingManager, IUserInputHandler userInputHandler)
         {
             _buildingManager = buildingManager;
+            _userInputHandler = userInputHandler;
         }
 
         public int Handle()
@@ -35,13 +39,9 @@ namespace SeatManagementConsole.Handlers
         private int AddToExistingBuilding()
         {
             var buildingList = _buildingManager.Get();
-            foreach (var building in buildingList)
-            {
-                Console.WriteLine($"{building.Id}. {building.Name}");
-            }
+            DisplayList.DisplayEntityList<Building>(buildingList);
 
-            Console.Write("Enter the building id of the building you want: ");
-            var buildingId = Convert.ToInt32(Console.ReadLine());
+            var buildingId = _userInputHandler.GetUserInputInt("nter the building id of the building you want: ");
 
             if (buildingList.Any(building => building.Id == buildingId))
             {
@@ -56,21 +56,15 @@ namespace SeatManagementConsole.Handlers
 
         private int AddToNewBuilding()
         {
-            Console.Write("Enter the name of the building: ");
-            var buildingName = Console.ReadLine();
-            Console.Write("Enter the building abbreviation: ");
-            var buildingAbbrv = Console.ReadLine();
+            var buildingName = _userInputHandler.GetUserInputString("Enter the name of the building: ");
+            var buildingAbbrv = _userInputHandler.GetUserInputString("Enter the building abbreviation: ");
 
             var buildingObj = new Building
             {
                 Name = buildingName,
                 Abbreviation = buildingAbbrv
             };
-
             return _buildingManager.Add(buildingObj);
         }
     }
 }
-
-
-

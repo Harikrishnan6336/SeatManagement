@@ -7,5 +7,9 @@ namespace SeatManagementAPI.Services.Interfaces
     {
         IEnumerable<Cabin> GetCabins();
         void AddCabin(CabinDTO cabinDTO);
+
+        IEnumerable<Cabin> GetUnoccupiedCabins();
+
+        void AllocateCabin(int CabinId, int EmployeeId);
     }
 }

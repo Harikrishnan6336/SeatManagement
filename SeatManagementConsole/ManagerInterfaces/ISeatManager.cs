@@ -8,12 +8,12 @@ using System.Threading.Tasks;
 
 namespace SeatManagementConsole.ManagerInterfaces
 {
-    public interface ISeatManager : ISeatManager<Seat>
+    public interface ISeatManager : IEntityManager<Seat>
     {
         List<Seat> GetUnoccupiedSeatsByFacility(int facilityId);
+        List<Seat> GetUnoccupiedSeats();
         void SeatAllocate(SeatAllocateDTO obj);
 
         void SeatDeallocate(SeatAllocateDTO obj);
-
     }
 }

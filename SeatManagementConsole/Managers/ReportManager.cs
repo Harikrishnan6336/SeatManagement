@@ -3,18 +3,19 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using SeatManagementAPI.DTOs;
 using SeatManagementConsole.ManagerInterfaces;
 
 namespace SeatManagementConsole.Managers
 {
-    public class ReportManager<T> : IReportManager<T> where T : class
+    public class ReportManager : IReportManager
     {
-        private readonly IApiCall<T> apiObj;
+        private readonly IApiCall<ReportDTO> apiObj;
         public ReportManager(string ep)
         {
-            apiObj = new ApiCall<T>(ep);
+            apiObj = new ApiCall<ReportDTO>(ep);
         }
-        public List<T> GenerateReport()
+        public List<ReportDTO> GenerateReport()
         {
             return apiObj.GetData();
         }

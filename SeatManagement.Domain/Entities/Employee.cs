@@ -3,7 +3,7 @@ using System.ComponentModel.DataAnnotations.Schema;
 
 namespace SeatManagementDomain.Entities
 {
-    public class Employee
+    public class Employee : IEntity
     {
         [Key]
         public int Id { get; set; }

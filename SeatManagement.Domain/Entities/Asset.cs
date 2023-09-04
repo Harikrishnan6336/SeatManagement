@@ -2,7 +2,7 @@
 
 namespace SeatManagementDomain.Entities
 {
-    public class Asset
+    public class Asset : IEntity
     {
         [Key]
         public int Id { get; set; }

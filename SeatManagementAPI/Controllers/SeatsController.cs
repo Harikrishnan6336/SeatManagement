@@ -22,6 +22,14 @@ namespace SeatManagementAPI.Controllers
             return Ok(_seatService.GetSeats());
         }
 
+
+        [HttpGet("unoccupiedseats")]
+        public IActionResult GetUnoccupiedSeats()
+        {
+            return Ok(_seatService.GetUnoccupiedSeats());
+        }
+
+
         [HttpGet("unoccupiedseats/{facilityId}")]
         public IActionResult GetUnoccupiedSeatsByFacility(int facilityId)
         {
