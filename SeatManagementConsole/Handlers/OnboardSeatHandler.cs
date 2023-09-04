@@ -11,9 +11,7 @@ namespace SeatManagementConsole.Handlers
         private readonly ISeatManager _seatManager;
         private readonly IUserInputHandler _userInputHandler;
 
-        public OnboardSeatHandler(IFacilityManager facilityManager,
-                                  ISeatManager seatManager,
-                                  IUserInputHandler userInputHandler)
+        public OnboardSeatHandler(IFacilityManager facilityManager, ISeatManager seatManager, IUserInputHandler userInputHandler)
         {
             _facilityManager = facilityManager;
             _seatManager = seatManager;
@@ -34,10 +32,19 @@ namespace SeatManagementConsole.Handlers
 
             var seatListCount = _seatManager.Get().Where(x => x.FacilityId == facilityId).ToList().Count;
             int seatCount = seatListCount + 1;
-            // TODO Allow an Employee to be allocated here itself.
+
+            AddSeats(facilityId, noOfSeats, seatCount);
+
+            Console.WriteLine("Your seats has been added successfully");
+            _userInputHandler.WaitForUserInput();
+            return 0;
+        }
+
+        private void AddSeats(int facilityId, int noOfSeats, int seatCount)
+        {
             for (int i = 0; i < noOfSeats; i++)
             {
-                var seatName = "S" + seatCount;
+                var seatName = GenerateSeatName(seatCount);
                 seatCount++;
                 var seat = new Seat
                 {
@@ -47,9 +54,11 @@ namespace SeatManagementConsole.Handlers
                 };
                 _seatManager.Add(seat);
             }
-            Console.WriteLine("Your seats has been added successfully");
-            _userInputHandler.WaitForUserInput();
-            return 0;
+        }
+
+        private static string GenerateSeatName(int seatCount)
+        {
+            return "S" + seatCount.ToString("D3");
         }
     }
 }

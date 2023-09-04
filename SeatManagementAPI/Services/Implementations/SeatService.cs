@@ -14,7 +14,7 @@ namespace SeatManagementAPI.Services.Implementations
             _unitOfWork = unitOfWork;
         }
 
-        public void AddSeat(SeatDTO seatDTO)
+        public int AddSeat(SeatDTO seatDTO)
         {
             var seat = new Seat()
             {
@@ -25,6 +25,7 @@ namespace SeatManagementAPI.Services.Implementations
             };
             _unitOfWork.Seat.Add(seat);
             _unitOfWork.Commit();
+            return seat.Id;
         }
 
         public IEnumerable<Seat> GetSeats()

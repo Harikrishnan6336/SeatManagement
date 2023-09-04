@@ -17,7 +17,7 @@ namespace SeatManagementAPI.Services.Implementations
         {
             return _unitOfWork.Cabin.GetAll();
         }
-        public void AddCabin(CabinDTO cabinDTO)
+        public int AddCabin(CabinDTO cabinDTO)
         {
             var cabin = new Cabin()
             {
@@ -27,6 +27,7 @@ namespace SeatManagementAPI.Services.Implementations
             };
             _unitOfWork.Cabin.Add(cabin);
             _unitOfWork.Commit();
+            return cabin.Id;
         }
 
         public IEnumerable<Cabin> GetUnoccupiedCabins()

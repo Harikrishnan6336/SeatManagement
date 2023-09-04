@@ -6,6 +6,6 @@ namespace SeatManagementAPI.Services.Interfaces
     public interface IDepartmentService
     {
         IEnumerable<Department> GetDepartments();
-        void AddDepartment(DepartmentDTO departmentDTO);
+        int AddDepartment(DepartmentDTO departmentDTO);
     }
 }

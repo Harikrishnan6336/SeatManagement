@@ -17,9 +17,12 @@ namespace SeatManagementConsole
             IReportManager reportManager = new ReportManager("api/reports");
 
             IEntityManager<City> cityManager = new EntityManager<City>("api/cities");
+            IEntityManager<Asset> assetManager = new EntityManager<Asset>("api/assets");
+
             IEntityManager<Building> buildingManager = new EntityManager<Building>("api/buildings");
             IEntityManager<Employee> employeeManager = new EntityManager<Employee>("api/employees");
             IEntityManager<MeetingRoom> meetingRoomManager = new EntityManager<MeetingRoom>("api/meetingrooms");
+            IEntityManager<MeetingRoomAsset> meetingRoomAssetManager = new EntityManager<MeetingRoomAsset>("api/meetingroomassets");
 
 
             IUserInputHandler consoleUserInputHandler = new ConsoleUserInputHandler();
@@ -37,15 +40,15 @@ namespace SeatManagementConsole
                 switch (mainMenuOption)
                 {
                     case '1':
-                        OnboardFacilityHandler onboardFacilityhandler = new(cityManager, buildingManager, facilityManager, consoleUserInputHandler);
-                        onboardFacilityhandler.Handle();
+                        OnboardFacilityHandler onboardFacilityHandler = new(cityManager, buildingManager, facilityManager, consoleUserInputHandler);
+                        onboardFacilityHandler.Handle();
                         break;
                     case '2':
-                        OnboardSeatHandler onboardSeathandler = new(facilityManager, seatManager, consoleUserInputHandler);
-                        onboardSeathandler.Handle();
+                        OnboardSeatHandler onboardSeatHandler = new(facilityManager, seatManager, consoleUserInputHandler);
+                        onboardSeatHandler.Handle();
                         break;
                     case '3':
-                        OnboardMeetingRoomHandler onboardMeetingRoomHandler = new(facilityManager, meetingRoomManager, consoleUserInputHandler);
+                        OnboardMeetingRoomHandler onboardMeetingRoomHandler = new(facilityManager, meetingRoomManager, assetManager, meetingRoomAssetManager, consoleUserInputHandler);
                         onboardMeetingRoomHandler.Handle();
                         break;
                     case '4':

@@ -7,7 +7,7 @@ namespace SeatManagementAPI.Services.Interfaces
     {
         IEnumerable<Building> GetBuildings();
 
-        void AddBuilding(BuildingDTO building);
+        int AddBuilding(BuildingDTO building);
     }
 }
 

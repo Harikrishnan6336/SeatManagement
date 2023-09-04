@@ -18,7 +18,7 @@ namespace SeatManagementAPI.Services.Implementations
             return _unitOfWork.Building.GetAll();
         }
 
-        public void AddBuilding(BuildingDTO buildingDTO)
+        public int AddBuilding(BuildingDTO buildingDTO)
         {
             var building = new Building()
             {
@@ -27,6 +27,7 @@ namespace SeatManagementAPI.Services.Implementations
             };
             _unitOfWork.Building.Add(building);
             _unitOfWork.Commit();
+            return building.Id;
         }
 
     }

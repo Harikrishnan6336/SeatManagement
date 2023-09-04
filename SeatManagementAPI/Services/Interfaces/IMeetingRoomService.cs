@@ -6,6 +6,6 @@ namespace SeatManagementAPI.Services.Interfaces
     public interface IMeetingRoomService
     {
         IEnumerable<MeetingRoom> GetMeetingRooms();
-        void AddMeetingRoom(MeetingRoomDTO meetingRoomDTO);
+        int AddMeetingRoom(MeetingRoomDTO meetingRoomDTO);
     }
 }

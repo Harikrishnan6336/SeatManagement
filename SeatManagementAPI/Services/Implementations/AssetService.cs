@@ -18,14 +18,15 @@ namespace SeatManagementAPI.Services.Implementations
             return _unitOfWork.Asset.GetAll();
         }
 
-        public void AddAsset(AssetDTO assetDTO)
+        public int AddAsset(AssetDTO assetDTO)
         {
-            var Asset = new Asset()
+            var asset = new Asset()
             {
                 Name = assetDTO.Name
             };
-            _unitOfWork.Asset.Add(Asset);
+            _unitOfWork.Asset.Add(asset);
             _unitOfWork.Commit();
+            return asset.Id;
         }
     }
 }

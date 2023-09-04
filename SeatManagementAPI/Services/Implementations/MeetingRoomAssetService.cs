@@ -13,7 +13,7 @@ namespace SeatManagementAPI.Services.Implementations
             _unitOfWork = unitOfWork;
         }
 
-        public void AddMeetingRoomAsset(MeetingRoomAssetDTO meetingRoomAssetDTO)
+        public int AddMeetingRoomAsset(MeetingRoomAssetDTO meetingRoomAssetDTO)
         {
             var meetingRoomAsset = new MeetingRoomAsset()
             {
@@ -23,6 +23,7 @@ namespace SeatManagementAPI.Services.Implementations
             };
             _unitOfWork.MeetingRoomAsset.Add(meetingRoomAsset);
             _unitOfWork.Commit();
+            return meetingRoomAsset.Id;
         }
 
         public IEnumerable<MeetingRoomAsset> GetMeetingRoomAssets()

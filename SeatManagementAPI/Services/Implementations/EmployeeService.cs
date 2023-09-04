@@ -14,7 +14,7 @@ namespace SeatManagementAPI.Services.Implementations
             _unitOfWork = unitOfWork;
         }
 
-        public void AddEmployee(EmployeeDTO employeeDTO)
+        public int AddEmployee(EmployeeDTO employeeDTO)
         {
             var employee = new Employee()
             {
@@ -23,6 +23,7 @@ namespace SeatManagementAPI.Services.Implementations
             };
             _unitOfWork.Employee.Add(employee);
             _unitOfWork.Commit();
+            return employee.Id;
         }
 
         public IEnumerable<Employee> GetEmployees()

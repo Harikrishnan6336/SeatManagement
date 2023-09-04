@@ -9,7 +9,7 @@ namespace SeatManagementAPI.Services.Interfaces
         IEnumerable<Seat> GetUnoccupiedSeatsByFacility(int facilityId);
         IEnumerable<Seat> GetUnoccupiedSeats();
 
-        void AddSeat(SeatDTO seatDTO);
+        int AddSeat(SeatDTO seatDTO);
         void AllocateSeat(int SeatId, int EmployeeId);
         void DeallocateSeat(int SeatId, int EmployeeId);
     }

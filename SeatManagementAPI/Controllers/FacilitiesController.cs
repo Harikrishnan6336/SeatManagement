@@ -34,8 +34,8 @@ namespace SeatManagementAPI.Controllers
         [HttpPost]
         public IActionResult Post(FacilityDTO facilityDTO)
         {
-            _facilityService.AddFacility(facilityDTO);
-            return Ok();
+            int id = _facilityService.AddFacility(facilityDTO);
+            return Ok(id);
         }
     }
 }

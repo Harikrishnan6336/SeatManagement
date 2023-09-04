@@ -12,7 +12,6 @@ namespace SeatManagementConsole
         private readonly HttpClient _client;
         public ApiCall(string ep)
         {
-
             _endPoint = ep;
             _client = new HttpClient
             {

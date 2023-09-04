@@ -12,7 +12,7 @@ using SeatManagementDataAccess.Context;
 namespace SeatManagementDataAccess.Migrations
 {
     [DbContext(typeof(SeatManagementDbContext))]
-    [Migration("20230903143505_init")]
+    [Migration("20230904085156_init")]
     partial class init
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)

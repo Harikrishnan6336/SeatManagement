@@ -27,8 +27,8 @@ namespace SeatManagementAPI.Controllers
         [HttpPost]
         public IActionResult Post(EmployeeDTO employeeDTO)
         {
-            _employeeService.AddEmployee(employeeDTO);
-            return Ok();
+            int id = _employeeService.AddEmployee(employeeDTO);
+            return Ok(id);
         }
     }
 }

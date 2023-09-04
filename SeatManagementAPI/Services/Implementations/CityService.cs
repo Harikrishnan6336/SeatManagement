@@ -12,7 +12,7 @@ namespace SeatManagementAPI.Services.Interfaces
         {
             _unitOfWork = unitOfWork;
         }
-        public void AddCity(CityDTO cityDTO)
+        public int AddCity(CityDTO cityDTO)
         {
             var city = new City()
             {
@@ -21,6 +21,7 @@ namespace SeatManagementAPI.Services.Interfaces
             };
             _unitOfWork.City.Add(city);
             _unitOfWork.Commit();
+           return city.Id;
         }
 
         public IEnumerable<City> GetCities()

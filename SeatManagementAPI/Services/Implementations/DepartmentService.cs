@@ -13,7 +13,7 @@ namespace SeatManagementAPI.Services.Implementations
         {
             _unitOfWork = unitOfWork;
         }
-        public void AddDepartment(DepartmentDTO departmentDTO)
+        public int AddDepartment(DepartmentDTO departmentDTO)
         {
             var department = new Department()
             {
@@ -21,6 +21,7 @@ namespace SeatManagementAPI.Services.Implementations
             };
             _unitOfWork.Department.Add(department);
             _unitOfWork.Commit();
+            return department.Id;
         }
 
         public IEnumerable<Department> GetDepartments()

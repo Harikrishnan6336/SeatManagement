@@ -7,7 +7,7 @@ namespace SeatManagementAPI.Services.Interfaces
     {
         IEnumerable<Facility> GetFacilities();
         IEnumerable<FacilityViewDTO> GetFacilitiesNomenclature();
-        void AddFacility(FacilityDTO facilityDTO);
+        int AddFacility(FacilityDTO facilityDTO);
 
     }
 }

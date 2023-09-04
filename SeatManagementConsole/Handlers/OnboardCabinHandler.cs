@@ -10,8 +10,7 @@ namespace SeatManagementConsole.Handlers
         private readonly IFacilityManager _facilityManager;
         private readonly ICabinManager _cabinManager;
         private readonly IUserInputHandler _userInputHandler;
-        public OnboardCabinHandler(IFacilityManager facilityManager,
-                                         ICabinManager cabinManager,
+        public OnboardCabinHandler(IFacilityManager facilityManager, ICabinManager cabinManager,
                                          IUserInputHandler userInputHandler)
         {
             _facilityManager = facilityManager;
@@ -32,8 +31,7 @@ namespace SeatManagementConsole.Handlers
 
             var cabinListCount = _cabinManager.Get().Where(x => x.FacilityId == facilityId).ToList().Count;
             cabinListCount++;
-            var cabinName = "C" + cabinListCount;
-
+            var cabinName = GenerateCabinName(cabinListCount);
 
             var cabin = new Cabin
             {
@@ -46,5 +44,12 @@ namespace SeatManagementConsole.Handlers
             _userInputHandler.WaitForUserInput();
             return 0;
         }
+
+        private static string GenerateCabinName(int cabinListCount)
+        {
+            return "C" + cabinListCount.ToString("D3");
+        }
+
+
     }
 }

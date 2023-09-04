@@ -16,7 +16,8 @@ namespace SeatManagementConsole.Managers
         }
         public int Add(T obj)
         {
-            return _apiCall.PostData(obj);
+            int ret =  _apiCall.PostData(obj);
+            return ret;
         }
     }
 }

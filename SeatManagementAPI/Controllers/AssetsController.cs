@@ -24,8 +24,8 @@ namespace SeatManagementAPI.Controllers
         [HttpPost]
         public IActionResult Post(AssetDTO assetDTO)
         {
-            _assetService.AddAsset(assetDTO);
-            return Ok();
+            int id = _assetService.AddAsset(assetDTO);
+            return Ok(id);
         }
 
         //[HttpPut]

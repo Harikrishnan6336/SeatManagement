@@ -14,7 +14,7 @@ namespace SeatManagementAPI.Services.Implementations
             _unitOfWork = unitOfWork;
         }
 
-        public void AddFacility(FacilityDTO facilityDTO)
+        public int AddFacility(FacilityDTO facilityDTO)
         {
             var facility = new Facility()
             {
@@ -26,6 +26,7 @@ namespace SeatManagementAPI.Services.Implementations
             };
             _unitOfWork.Facility.Add(facility);
             _unitOfWork.Commit();
+            return facility.Id;
         }
 
         public IEnumerable<Facility> GetFacilities()

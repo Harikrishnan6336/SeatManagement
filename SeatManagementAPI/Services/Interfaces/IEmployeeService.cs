@@ -6,6 +6,6 @@ namespace SeatManagementAPI.Services.Interfaces
     public interface IEmployeeService
     {
         IEnumerable<Employee> GetEmployees();
-        void AddEmployee(EmployeeDTO employeeDTO);
+        int AddEmployee(EmployeeDTO employeeDTO);
     }
 }

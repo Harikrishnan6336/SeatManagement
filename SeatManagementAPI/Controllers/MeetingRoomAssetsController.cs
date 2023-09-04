@@ -23,8 +23,8 @@ namespace SeatManagementAPI.Controllers
         [HttpPost]
         public IActionResult Post(MeetingRoomAssetDTO meetingRoomAssetDTO)
         {
-            _meetingRoomAssetService.AddMeetingRoomAsset(meetingRoomAssetDTO);
-            return Ok();
+            int id  = _meetingRoomAssetService.AddMeetingRoomAsset(meetingRoomAssetDTO);
+            return Ok(id);
         }
     }
 }

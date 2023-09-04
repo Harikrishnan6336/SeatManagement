@@ -2,6 +2,7 @@
 using SeatManagementConsole.IOInterfaces;
 using SeatManagementConsole.ManagerInterfaces;
 using SeatManagementDomain.Entities;
+using System.Text.RegularExpressions;
 
 namespace SeatManagementConsole.Handlers
 {
@@ -18,7 +19,7 @@ namespace SeatManagementConsole.Handlers
 
         public int Handle()
         {
-            Console.WriteLine("[1].Add to existing city\n[2].Add to new city");
+            Console.WriteLine("[1].Add to existing city\t\t[2].Add to new city\n[3].Cancel Onboard Facility");
             Console.Write("Enter your option:");
 
             char cityMenuOption = Console.ReadKey().KeyChar;
@@ -31,6 +32,9 @@ namespace SeatManagementConsole.Handlers
                     
                 case '2':
                     return AddToNewCity();
+                case '3':
+                    Console.WriteLine("Onboard of Facility Cancelled.");
+                    return -1;
                 default:
                     Console.WriteLine("Invalid option. Please try again.");
                     return Handle();
@@ -41,31 +45,44 @@ namespace SeatManagementConsole.Handlers
         {
             var cityList = _cityManager.Get();
             DisplayList.DisplayEntityList<City>(cityList);
-            var cityId = _userInputHandler.GetUserInputInt("Enter the city id of the city you want: ");
+            int cityId;
+            bool isValidId = false;
 
-            if (cityList.Any(city => city.Id == cityId))
+            while (!isValidId)
             {
-                return cityId;
+                cityId = _userInputHandler.GetUserInputInt("Enter the city id of the city you want: ");
+
+                if (cityList.Any(city => city.Id == cityId))
+                {
+                    return cityId;
+                }
+                else
+                {
+                    Console.WriteLine("Invalid city id. Please try again.");
+                }
             }
-            else
-            {
-                Console.WriteLine("Invalid city id. Please try again.");
-                return AddToExistingCity();
-            }
+            return -1;
         }
 
         private int AddToNewCity()
         {
             var cityName = _userInputHandler.GetUserInputString("Enter the name of the city: ");
-            var cityAbbrv = _userInputHandler.GetUserInputString("Enter the city abbreviation: ");
+            string cityAbbrv = _userInputHandler.GetUserInputString("Enter the city abbreviation: ");
+
+            while (!Regex.Match(cityAbbrv, "^[A-Z]{3}$").Success)
+            {
+                Console.WriteLine("Invalid Abbreviation. Abbreviations should be of the form [XXX]. Try Again. ");
+                cityAbbrv = _userInputHandler.GetUserInputString("Enter the city abbreviation: ");
+            }
 
             var cityObj = new City
             {
                 Name = cityName,
                 Abbreviation = cityAbbrv
             };
-
-            return _cityManager.Add(cityObj);
+            int kk = _cityManager.Add(cityObj);
+            Console.WriteLine(kk);
+            return kk;
         }
     }
 }

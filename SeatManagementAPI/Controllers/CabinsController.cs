@@ -31,8 +31,8 @@ namespace SeatManagementAPI.Controllers
         [HttpPost]
         public IActionResult Post(CabinDTO cabinDTO)
         {
-            _cabinService.AddCabin(cabinDTO);
-            return Ok();
+            int id  = _cabinService.AddCabin(cabinDTO);
+            return Ok(id);
         }
 
         [HttpPatch("allocate")]

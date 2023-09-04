@@ -1,12 +1,13 @@
 ﻿using SeatManagementDataAccess.Implementation;
 using SeatManagementDataAccess.Context;
 using SeatManagementDomain.Repository;
+using Microsoft.EntityFrameworkCore;
 
 namespace SeatManagementDataAccess.Implementation
 {
     public class UnitOfWork : IUnitOfWork
     {
-        private readonly SeatManagementDbContext _reportService;
+        private readonly SeatManagementDbContext _context;
         public IAssetRepository Asset { get; private set; }
         public IBuildingRepository Building { get; private set; }
         public ICityRepository City { get; private set; }
@@ -19,8 +20,8 @@ namespace SeatManagementDataAccess.Implementation
         public ISeatRepository Seat { get; private set; }
 
         public UnitOfWork(SeatManagementDbContext context)  
-        { 
-            _reportService = context;
+        {
+            _context = context;
             Asset = new AssetRepository(context);
             Building = new BuildingRepository(context);
             City = new CityRepository(context);
@@ -35,12 +36,12 @@ namespace SeatManagementDataAccess.Implementation
 
         public int Commit()
         {
-            return _reportService.SaveChanges();
+            return _context.SaveChanges();
         }
 
         public void Dispose()
         {
-            _reportService.Dispose();
+            _context.Dispose();
         }
     }
 }

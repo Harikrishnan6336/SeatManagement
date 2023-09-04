@@ -6,7 +6,7 @@ namespace SeatManagementAPI.Services.Interfaces
     public interface ICabinService
     {
         IEnumerable<Cabin> GetCabins();
-        void AddCabin(CabinDTO cabinDTO);
+        int AddCabin(CabinDTO cabinDTO);
 
         IEnumerable<Cabin> GetUnoccupiedCabins();
 

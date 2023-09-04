@@ -40,12 +40,12 @@ namespace SeatManagementAPI.Controllers
         [HttpPost]
         public IActionResult Post(SeatDTO seatDTO)
         {
-            _seatService.AddSeat(seatDTO);
-            return Ok();
+            int id = _seatService.AddSeat(seatDTO);
+            return Ok(id);
         }
 
         [HttpPatch("allocate")]
-        public IActionResult Allocate(SeatAllocateDTO seat) 
+        public IActionResult Allocate(SeatAllocateDTO seat)
         {
             _seatService.AllocateSeat(seat.SeatId, (int)seat.EmployeeId!);
             return Ok();
