@@ -1,4 +1,5 @@
-﻿using SeatManagementConsole.ManagerInterfaces;
+﻿using SeatManagementConsole.APICalls;
+using SeatManagementConsole.ManagerInterfaces;
 
 namespace SeatManagementConsole.Managers
 {

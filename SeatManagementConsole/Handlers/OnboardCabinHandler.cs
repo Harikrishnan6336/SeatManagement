@@ -22,10 +22,7 @@ namespace SeatManagementConsole.Handlers
         {
             Console.WriteLine("Facility List:");
             var facilityViewDTOList = _facilityManager.GetNomenclature();
-            foreach (FacilityViewDTO facilityViewDTO in facilityViewDTOList)
-            {
-                Console.WriteLine($"{facilityViewDTO.FacilityId}. {facilityViewDTO.CityAbbreviation}-{facilityViewDTO.BuildingAbbreviation}-{facilityViewDTO.FaciltyFloor}-{facilityViewDTO.FaciltyName}");
-            }
+            facilityViewDTOList.ForEach(facilityViewDTO => Console.WriteLine($"{facilityViewDTO.FacilityId}. {facilityViewDTO.CityAbbreviation}-{facilityViewDTO.BuildingAbbreviation}-{facilityViewDTO.FaciltyFloor}-{facilityViewDTO.FaciltyName}"));
 
             var facilityId = _userInputHandler.GetUserInputInt("Choose the facility id(where cabin should be added):");
 

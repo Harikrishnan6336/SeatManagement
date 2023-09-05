@@ -4,7 +4,7 @@ using SeatManagement;
 using System.Text;
 using JsonSerializer = System.Text.Json.JsonSerializer;
 
-namespace SeatManagementConsole
+namespace SeatManagementConsole.APICalls
 {
     public class ApiCall<T> : IApiCall<T> where T : class
     {

@@ -29,10 +29,7 @@ namespace SeatManagementConsole.Handlers
         {
             Console.WriteLine("Facility List:");
             var facilityViewDTOList = _facilityManager.GetNomenclature();
-            foreach (FacilityViewDTO facilityViewDTO in facilityViewDTOList)
-            {
-                Console.WriteLine($"{facilityViewDTO.FacilityId}. {facilityViewDTO.CityAbbreviation}-{facilityViewDTO.BuildingAbbreviation}-{facilityViewDTO.FaciltyFloor}-{facilityViewDTO.FaciltyName}");
-            }
+            facilityViewDTOList.ForEach(facilityViewDTO => Console.WriteLine($"{facilityViewDTO.FacilityId}. {facilityViewDTO.CityAbbreviation}-{facilityViewDTO.BuildingAbbreviation}-{facilityViewDTO.FaciltyFloor}-{facilityViewDTO.FaciltyName}"));
 
             var facilityId = _userInputHandler.GetUserInputInt("Choose the facility id(where meeting room should be added):");
             var seatCount = _userInputHandler.GetUserInputInt("Enter the number of seats in the room");
@@ -49,7 +46,6 @@ namespace SeatManagementConsole.Handlers
             };
             int meetingRoomId = _meetingRoomManager.Add(meetingRoom);
             Console.WriteLine("Your meeting room has been added successfully\n");
-
 
             int assetChoice;
             do
@@ -74,7 +70,6 @@ namespace SeatManagementConsole.Handlers
                 _meetingRoomAssetManager.Add(meetingRoomAsset);
 
             } while (assetChoice != 9);
-
             return 0;
         }
 

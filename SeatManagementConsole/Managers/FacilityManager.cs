@@ -1,4 +1,5 @@
 ﻿using SeatManagementAPI.DTOs;
+using SeatManagementConsole.APICalls;
 using SeatManagementConsole.ManagerInterfaces;
 using SeatManagementDomain.Entities;
 using SeatManagementDomain.Repository;
