@@ -57,6 +57,7 @@ namespace SeatManagementConsole.Handlers
                 assetChoice = _userInputHandler.GetUserInputInt("Enter your choice(Press 9 to Skip/Continue): ");
                 if (assetChoice == 9)
                 {
+                    Console.Clear();
                     return 0;
                 }
                 int qty = _userInputHandler.GetUserInputInt("Enter the quantity: ");
@@ -68,7 +69,6 @@ namespace SeatManagementConsole.Handlers
                     Quantity = qty,
                 };
                 _meetingRoomAssetManager.Add(meetingRoomAsset);
-
             } while (assetChoice != 9);
             return 0;
         }

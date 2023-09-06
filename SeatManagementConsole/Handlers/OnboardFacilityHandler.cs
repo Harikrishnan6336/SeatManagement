@@ -39,12 +39,13 @@ namespace SeatManagementConsole.Handlers
 
             Console.Write("Enter the Floor number: ");
             var facilityFloor = Convert.ToInt16(Console.ReadLine());
-            while(facilityFloor > -1 && facilityFloor < 100) 
+            while(facilityFloor < -1 && facilityFloor > 100) 
             {
                 Console.WriteLine("Invalid Floor number. (-1< num< 100)");
                 Console.Write("Try Again. Enter the Floor number:  ");
                 facilityFloor = Convert.ToInt16(Console.ReadLine());
             }
+
 
             var facilityObj = new Facility
             {

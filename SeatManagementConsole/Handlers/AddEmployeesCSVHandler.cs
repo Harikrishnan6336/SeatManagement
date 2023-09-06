@@ -21,21 +21,29 @@ namespace SeatManagementConsole.Handlers
 
             string path = $"{Environment.CurrentDirectory}\\{fileName}";
             Console.WriteLine(path);
-            using (var reader = new StreamReader(path))
+            try
             {
-                while (!reader.EndOfStream)
+                using (var reader = new StreamReader(path))
                 {
-                    var line = reader.ReadLine();
-                    var values = line.Split(',');
-
-                    Employee empObj = new Employee
+                    while (!reader.EndOfStream)
                     {
-                        Name = values[0],
-                        DepartmentId = int.Parse(values[1])
-                    };
-                    _employeeManager.Add(empObj);
+                        var line = reader.ReadLine();
+                        var values = line.Split(',');
+
+                        Employee empObj = new Employee
+                        {
+                            Name = values[0],
+                            DepartmentId = int.Parse(values[1])
+                        };
+                        _employeeManager.Add(empObj);
+                    }
                 }
             }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.Message);
+            }
+
             _userInputHandler.WaitForUserInput();
             return 0;
         }
